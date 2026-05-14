@@ -11,7 +11,7 @@ st.header('Criação de um histograma sobre vendas de veículos')
 hist_button = st.button('Clique para criar histograma')
 
 if hist_button:
-    st.write('Cria histograma relativo à venda de veículos')
+    st.write('Cria histograma relativo ao preço de venda de veículos')
 
     # criando um histograma
     fig = px.histogram(car_analysis, x='price')
@@ -26,6 +26,30 @@ if scatter_button:
 
     # criando um gráfico de dispersão
     fig = px.scatter(car_analysis, x='model_year', y='price')
+
+    # exibir um gráfico Plotly interactivo
+    st.plotly_chart(fig, use_container_width=True)
+
+# criar uma caixa de seleção
+build_histogram = st.checkbox('Criar um histograma')
+
+if build_histogram:  # se a caixa de seleção for selecionada
+    st.write('Criando um histograma para a coluna odometer')
+
+    # criando um histograma
+    fig = px.histogram(car_analysis, x='odometer')
+
+    # exibir um gráfico Plotly interactivo
+    st.plotly_chart(fig, use_container_width=True)
+
+build_scatter = st.checkbox('Clique para criar gráfico de dispersão')
+
+
+if build_scatter:
+    st.write('Cria gráfico de dispersão relativo à venda de veículos')
+
+    # criando um gráfico de dispersão
+    fig = px.scatter(car_analysis, x='days_listed', y='price')
 
     # exibir um gráfico Plotly interactivo
     st.plotly_chart(fig, use_container_width=True)
